@@ -4,11 +4,27 @@ OpenTelemetry-powered tracing library for Saryno services. Ships with batteries-
 
 ## Install
 
+The package is published to GitHub Packages. Point the `@saryno` scope at the GitHub registry in an
+`.npmrc` (repo-local or `~/.npmrc`):
+
+```
+@saryno:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```
+
+`GITHUB_TOKEN` needs the `read:packages` scope. Then:
+
 ```bash
 pnpm add @saryno/tracer
 ```
 
 Requires Node 18+.
+
+## Publishing
+
+Run the **Publish** workflow from the Actions tab (`workflow_dispatch`). It publishes the version in
+`package.json` by default; pass a `version` input to override (GitHub Packages rejects republishing an
+existing version, so bump it for each test release).
 
 ## Basic Usage
 
