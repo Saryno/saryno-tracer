@@ -34,11 +34,9 @@ export class Tracer {
       diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
     }
 
-    const headers = config.apiKey ? { "X-API-Key": config.apiKey } : undefined;
-
     const traceExporter = config.debug
       ? new ConsoleSpanExporter()
-      : new OTLPTraceExporter({ url: config.tracesUrl, headers });
+      : new OTLPTraceExporter({ url: config.tracesUrl });
 
     this.sdk = new NodeSDK({
       resource: resourceFromAttributes({
@@ -50,7 +48,6 @@ export class Tracer {
       metricReader: new PeriodicExportingMetricReader({
         exporter: new OTLPMetricExporter({
           url: config.metricsUrl,
-          headers,
         }),
         exportIntervalMillis: config.metricInterval,
       }),
@@ -61,7 +58,7 @@ export class Tracer {
     this.started = true;
 
     console.log(
-      `OpenTelemetry SDK started [traces=${config.tracesUrl}, apiKey=${config.apiKey ? "set" : "none"}, debug=${config.debug}]`,
+      `OpenTelemetry SDK started [traces=${config.tracesUrl}, debug=${config.debug}]`,
     );
 
     process.on("SIGTERM", () => {

@@ -8,6 +8,8 @@ OpenTelemetry-powered tracing library for Saryno services. Ships with batteries-
 pnpm add @saryno/tracer
 ```
 
+Requires Node 18+.
+
 ## Basic Usage
 
 ```typescript
@@ -36,7 +38,6 @@ tracer.init({
   version: '1.0.0',                // npm_package_version
   env: 'production',               // SARYNO_ENV, NODE_ENV
   endpoint: 'http://localhost:4318', // OTEL_EXPORTER_OTLP_ENDPOINT
-  apiKey: 'sk-xxx',                // SARYNO_INGEST_API_KEY
   debug: false,                    // OTEL_DEBUG=true for console export
   diag: false,                     // OTEL_DIAG=true for diagnostics
   metricInterval: 10000,           // ms between metric exports

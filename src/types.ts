@@ -14,7 +14,6 @@ export interface TracerConfig {
   endpoint?: string;
   tracesUrl?: string;
   metricsUrl?: string;
-  apiKey?: string;
   debug?: boolean;
   diag?: boolean;
   metricInterval?: number;

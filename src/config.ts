@@ -25,7 +25,6 @@ export function resolveConfig(options?: TracerConfig): Required<TracerConfig> {
     options?.metricsUrl ||
     process.env.OTEL_EXPORTER_OTLP_METRICS_ENDPOINT ||
     `${endpoint}/v1/metrics`;
-  const apiKey = options?.apiKey || process.env.SARYNO_INGEST_API_KEY || "";
   const debug = (options?.debug ?? false) || process.env.OTEL_DEBUG === "true";
   const diag =
     (options?.diag ?? false) || debug || process.env.OTEL_DIAG === "true";
@@ -39,7 +38,6 @@ export function resolveConfig(options?: TracerConfig): Required<TracerConfig> {
     endpoint,
     tracesUrl,
     metricsUrl,
-    apiKey,
     debug,
     diag,
     metricInterval,

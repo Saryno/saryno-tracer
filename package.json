@@ -5,7 +5,7 @@
   "author": "Saryno",
   "license": "UNLICENSED",
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=18.0.0"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
